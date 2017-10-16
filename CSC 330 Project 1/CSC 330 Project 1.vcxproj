@@ -111,6 +111,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Contents.cpp" />
+    <ClCompile Include="Date.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Vehicle.cpp" />
+    <ClCompile Include="VehicleManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Contents.h" />
+    <ClInclude Include="Date.h" />
+    <ClInclude Include="Vehicle.h" />
+    <ClInclude Include="VehicleManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
