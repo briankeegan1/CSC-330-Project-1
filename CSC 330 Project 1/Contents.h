@@ -5,12 +5,12 @@ using namespace std;
 
 class Contents {
 public:
-	void setItemName(string);
-	void setQuantity(string);
+	void setItemName(string[], int);
+	void setQuantity(float *, int);
 
-	string getItemName();
-	float getQuantity();
+	string getItemName(int);
+	float getQuantity(int);
 private:
-	string itemName;
-	float quantity;
+	string itemName[255];
+	float quantity[255];
 };

@@ -1,19 +1,21 @@
 #include "Vehicle.h"
 
-void Vehicle::setID()
+void Vehicle::setID(string ID)
 {
+	this->ID = ID;
 }
 
-void Vehicle::setFuel()
+void Vehicle::setFuel(float fuel)
 {
+	this->fuel = fuel;
 }
 
 string Vehicle::getID()
 {
-	return string();
+	return ID;
 }
 
 float Vehicle::getFuel()
 {
-	return 0.0f;
+	return fuel;
 }

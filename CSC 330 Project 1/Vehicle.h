@@ -5,8 +5,8 @@ using namespace std;
 
 class Vehicle {
 public:
-	void setID();
-	void setFuel();
+	void setID(string);
+	void setFuel(float);
 
 	string getID();
 	float getFuel();

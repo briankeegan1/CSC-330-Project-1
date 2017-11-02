@@ -1,0 +1,8 @@
+Vehicle ID: 12
+Date: 2/3/4
+Driver: ArinHanson
+Trip Mileage: 122
+Vehicle Usage: Escort
+Contents
+Sherle	x1
+Morgan	x2

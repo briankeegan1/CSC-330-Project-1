@@ -1,10 +1,29 @@
 #include "Date.h"
 
-void Date::setDate(int, int, int)
+void Date::setDate(int day, int month, int year)
 {
+	this->day = day;
+	this->month = month;
+	this->year = year;
+	//modify to check to make sure it is a valid date
 }
 
 Date Date::getDate()
 {
 	return Date();
+}
+
+int Date::getDay()
+{
+	return day;
+}
+
+int Date::getMonth()
+{
+	return month;
+}
+
+int Date::getYear()
+{
+	return year;
 }

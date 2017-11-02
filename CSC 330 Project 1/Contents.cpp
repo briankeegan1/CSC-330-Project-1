@@ -1,19 +1,27 @@
 #include "Contents.h"
 
-void Contents::setItemName(string)
+void Contents::setItemName(string itemName[], int size)
 {
+	for (int i = 0; i < size; i++)
+	{
+		this->itemName[i] = itemName[i];
+	}
 }
 
-void Contents::setQuantity(string)
+void Contents::setQuantity(float *quantity, int size)
 {
+	for (int i = 0; i < size; i++)
+	{
+		this->quantity[i] = quantity[i];
+	}
 }
 
-string Contents::getItemName()
+string Contents::getItemName(int index)
 {
-	return string();
+	return itemName[index];
 }
 
-float Contents::getQuantity()
+float Contents::getQuantity(int index)
 {
-	return 0.0f;
+	return quantity[index];
 }
