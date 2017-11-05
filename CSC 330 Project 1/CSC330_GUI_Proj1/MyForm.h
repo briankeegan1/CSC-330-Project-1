@@ -39,6 +39,7 @@ namespace CSC330GUIProj1 {
 			{
 				delete components;
 			}
+			exit(0);
 		}
 	private: System::Windows::Forms::Button^  createLog;
 	protected:
@@ -58,6 +59,10 @@ namespace CSC330GUIProj1 {
 	private: System::Windows::Forms::ListView^  contentList;
 	private: System::Windows::Forms::Button^  addToContents;
 	private: System::Windows::Forms::NumericUpDown^  contentStock;
+	private: System::Windows::Forms::Label^  errorLabel;
+	private: System::Windows::Forms::TextBox^  vehicleUsage;
+	private: System::Windows::Forms::Label^  label3;
+
 
 	protected:
 
@@ -94,6 +99,9 @@ namespace CSC330GUIProj1 {
 			this->contentList = (gcnew System::Windows::Forms::ListView());
 			this->addToContents = (gcnew System::Windows::Forms::Button());
 			this->contentStock = (gcnew System::Windows::Forms::NumericUpDown());
+			this->errorLabel = (gcnew System::Windows::Forms::Label());
+			this->vehicleUsage = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->logMileage))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->contentStock))->BeginInit();
@@ -135,7 +143,7 @@ namespace CSC330GUIProj1 {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(32, 135);
+			this->label2->Location = System::Drawing::Point(32, 163);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(136, 20);
 			this->label2->TabIndex = 3;
@@ -146,7 +154,7 @@ namespace CSC330GUIProj1 {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(32, 174);
+			this->label6->Location = System::Drawing::Point(32, 202);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(98, 20);
 			this->label6->TabIndex = 11;
@@ -157,7 +165,7 @@ namespace CSC330GUIProj1 {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(32, 209);
+			this->label7->Location = System::Drawing::Point(32, 237);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(134, 20);
 			this->label7->TabIndex = 13;
@@ -168,7 +176,7 @@ namespace CSC330GUIProj1 {
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(181, 334);
+			this->label8->Location = System::Drawing::Point(181, 362);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(66, 20);
 			this->label8->TabIndex = 16;
@@ -179,7 +187,7 @@ namespace CSC330GUIProj1 {
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(264, 235);
+			this->label9->Location = System::Drawing::Point(264, 263);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(50, 20);
 			this->label9->TabIndex = 17;
@@ -216,7 +224,7 @@ namespace CSC330GUIProj1 {
 			// 
 			// logDate
 			// 
-			this->logDate->Location = System::Drawing::Point(176, 135);
+			this->logDate->Location = System::Drawing::Point(176, 163);
 			this->logDate->Name = L"logDate";
 			this->logDate->Size = System::Drawing::Size(200, 20);
 			this->logDate->TabIndex = 22;
@@ -224,7 +232,7 @@ namespace CSC330GUIProj1 {
 			// 
 			// logMileage
 			// 
-			this->logMileage->Location = System::Drawing::Point(176, 174);
+			this->logMileage->Location = System::Drawing::Point(176, 202);
 			this->logMileage->Name = L"logMileage";
 			this->logMileage->Size = System::Drawing::Size(120, 20);
 			this->logMileage->TabIndex = 23;
@@ -236,7 +244,7 @@ namespace CSC330GUIProj1 {
 				listViewItem1, listViewItem2,
 					listViewItem3
 			});
-			this->contentList->Location = System::Drawing::Point(176, 209);
+			this->contentList->Location = System::Drawing::Point(176, 237);
 			this->contentList->Name = L"contentList";
 			this->contentList->Size = System::Drawing::Size(82, 122);
 			this->contentList->TabIndex = 24;
@@ -245,7 +253,7 @@ namespace CSC330GUIProj1 {
 			// 
 			// addToContents
 			// 
-			this->addToContents->Location = System::Drawing::Point(176, 357);
+			this->addToContents->Location = System::Drawing::Point(176, 385);
 			this->addToContents->Name = L"addToContents";
 			this->addToContents->Size = System::Drawing::Size(92, 23);
 			this->addToContents->TabIndex = 25;
@@ -255,17 +263,50 @@ namespace CSC330GUIProj1 {
 			// 
 			// contentStock
 			// 
-			this->contentStock->Location = System::Drawing::Point(264, 212);
+			this->contentStock->Location = System::Drawing::Point(264, 240);
 			this->contentStock->Name = L"contentStock";
 			this->contentStock->Size = System::Drawing::Size(78, 20);
 			this->contentStock->TabIndex = 26;
 			this->contentStock->ValueChanged += gcnew System::EventHandler(this, &MyForm::contentStock_ValueChanged);
 			// 
+			// errorLabel
+			// 
+			this->errorLabel->AutoSize = true;
+			this->errorLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->errorLabel->ForeColor = System::Drawing::Color::Red;
+			this->errorLabel->Location = System::Drawing::Point(276, 421);
+			this->errorLabel->Name = L"errorLabel";
+			this->errorLabel->Size = System::Drawing::Size(0, 31);
+			this->errorLabel->TabIndex = 27;
+			// 
+			// vehicleUsage
+			// 
+			this->vehicleUsage->Location = System::Drawing::Point(176, 130);
+			this->vehicleUsage->Name = L"vehicleUsage";
+			this->vehicleUsage->Size = System::Drawing::Size(100, 20);
+			this->vehicleUsage->TabIndex = 29;
+			this->vehicleUsage->TextChanged += gcnew System::EventHandler(this, &MyForm::vehicleUsage_TextChanged);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(32, 130);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(116, 20);
+			this->label3->TabIndex = 28;
+			this->label3->Text = L"Vehicle Usage:";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(852, 464);
+			this->ClientSize = System::Drawing::Size(854, 461);
+			this->Controls->Add(this->vehicleUsage);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->errorLabel);
 			this->Controls->Add(this->contentStock);
 			this->Controls->Add(this->addToContents);
 			this->Controls->Add(this->contentList);
@@ -293,20 +334,38 @@ namespace CSC330GUIProj1 {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		ofstream outputFile;
-		outputFile.open("Test.txt", ofstream::app);
-		if (outputFile.is_open())
+		ofstream outputFile;//file stream
+		outputFile.open("Test.txt", ofstream::app);//open file
+
+		if (outputFile.is_open())//check if file is open, if not exit program
 		{
 			int day, month, year;
 			Log.getDateAll(day, month, year);
-			outputFile << "Vehicle Operator: " << Log.getName() << endl;
-			outputFile << "Vehicle ID: " << Log.getID() << endl;
-			outputFile << "Trip Mileage: " << Log.getMileage() << endl;
-			outputFile << "Operating Date: " << month << " / " << day << " / " << year << endl;
-			outputFile << "--------------Cargo List--------------" << endl;
-			for (int i = 0; i < Log.getVectSize(); i++)
+			if ((Log.getName() == "") || (Log.getID() == "") || (Log.getMileage() == NULL) || (day == NULL) || (Log.getVectSize() < 1) || (Log.getUsage() == ""))
 			{
-				outputFile << Log.getItemName(i) <<"\tx"<< Log.getQuantity(i) << endl;
+				errorLabel->Text = "Must fill in all fields";
+			}
+			else
+			{
+				outputFile << "Vehicle Operator: " << Log.getName() << endl;
+				outputFile << "Vehicle ID: " << Log.getID() << endl;
+				outputFile << "Vehicle Usage: " << Log.getUsage() << endl;
+				outputFile << "Trip Mileage: " << Log.getMileage() << endl;
+				outputFile << "Operating Date: " << month << " / " << day << " / " << year << endl;
+				outputFile << "--------------Cargo List--------------" << endl;
+				for(int i = 0; i < Log.getVectSize(); i++)
+				{
+					outputFile << Log.getItemName(i) << "\tx" << Log.getQuantity(i) << endl;
+				}
+				outputFile << "|--|" << endl << endl;
+				//clear data on Log variable
+				
+				logVehicleID->Text = "";
+				logDriverName->Text = "";
+				vehicleUsage->Text = "";
+				logMileage->Value = 0;
+				contentStock->Value = 0;
+				errorLabel->Text = "";
 			}
 		}
 		else
@@ -330,10 +389,13 @@ private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, Syste
 }
 private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
 	Log.setItemName(msclr::interop::marshal_as<std::string>(contentList->SelectedItems[0]->ToString()));
-	
+	Log.setQuantity(System::Convert::ToInt16(contentStock->Value));
+	contentStock->Value = 0;
 }
 private: System::Void contentStock_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-	Log.setQuantity(System::Convert::ToInt16(contentStock->Value));
+}
+private: System::Void vehicleUsage_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	Log.setUsage(msclr::interop::marshal_as<std::string>(vehicleUsage->Text));
 }
 };
 }

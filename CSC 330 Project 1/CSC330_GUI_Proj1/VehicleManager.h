@@ -28,6 +28,7 @@ public:
 	Date getDate();
 	void getDateAll(int&, int&, int&);
 	int getVectSize();
+	void emptyVectors();
 private:
 	string usage;
 	string name;

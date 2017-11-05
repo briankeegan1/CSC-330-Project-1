@@ -12,6 +12,7 @@ public:
 	string getItemName(int);
 	int getQuantity(int);
 	int getVectSize();
+	void emptyVectors();
 private:
 	vector<string> itemName;
 	vector<int> quantity;

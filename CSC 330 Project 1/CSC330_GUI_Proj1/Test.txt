@@ -1,0 +1,86 @@
+Vehicle Operator: Pablo
+Vehicle ID: 6845
+Vehicle Usage: Delivery
+Trip Mileage: 16
+Operating Date: 11 / 23 / 2017
+--------------Cargo List--------------
+ListViewItem: {Shoelaces}	x3
+ListViewItem: {Socks}	x22
+|--|
+
+
+Vehicle Operator: Seela
+Vehicle ID: 6541
+Vehicle Usage: Delivery
+Trip Mileage: 45
+Operating Date: 11 / 14 / 2017
+--------------Cargo List--------------
+ListViewItem: {Shoelaces}	x12
+ListViewItem: {Socks}	x21
+|--|
+
+
+Vehicle Operator: Micheal
+Vehicle ID: 45234
+Vehicle Usage: Delivery
+Trip Mileage: 17
+Operating Date: 11 / 9 / 2017
+--------------Cargo List--------------
+ListViewItem: {Shoes}	x64
+|--|
+
+Vehicle Operator: Violet
+Vehicle ID: 777
+Vehicle Usage: Delivery
+Trip Mileage: 91
+Operating Date: 1 / 15 / 2018
+--------------Cargo List--------------
+ListViewItem: {Shoes}	x25
+ListViewItem: {Socks}	x21
+|--|
+
+Vehicle Operator: Chris
+Vehicle ID: 3125
+Vehicle Usage: Delivery
+Trip Mileage: 45
+Operating Date: 12 / 13 / 2017
+--------------Cargo List--------------
+ListViewItem: {Shoelaces}	x22
+ListViewItem: {Socks}	x12
+|--|
+
+Vehicle Operator: Brian
+Vehicle ID: 68746
+Vehicle Usage: Delivery
+Trip Mileage: 65
+Operating Date: 11 / 15 / 2017
+--------------Cargo List--------------
+ListViewItem: {Socks}	x64
+ListViewItem: {Shoes}	x21
+ListViewItem: {Socks}	x45
+|--|
+
+Vehicle Operator: Dominic
+Vehicle ID: 9956
+Vehicle Usage: Delivery
+Trip Mileage: 65
+Operating Date: 11 / 19 / 2017
+--------------Cargo List--------------
+ListViewItem: {Shoes}	x25
+ListViewItem: {Socks}	x100
+ListViewItem: {Shoelaces}	x33
+ListViewItem: {Socks}	x12
+|--|
+
+Vehicle Operator: Carlos
+Vehicle ID: 6545
+Vehicle Usage: Delivery
+Trip Mileage: 31
+Operating Date: 11 / 18 / 2017
+--------------Cargo List--------------
+ListViewItem: {Shoelaces}	x12
+ListViewItem: {Socks}	x12
+ListViewItem: {Shoes}	x100
+ListViewItem: {Shoelaces}	x32
+|--|
+

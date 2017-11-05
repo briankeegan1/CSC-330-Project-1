@@ -91,3 +91,8 @@ int VehicleManager::getVectSize()
 {
 	return contents.getVectSize();;
 }
+
+void VehicleManager::emptyVectors()
+{
+	contents.emptyVectors();
+}

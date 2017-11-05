@@ -24,3 +24,13 @@ int Contents::getVectSize()
 {
 	return itemName.size();
 }
+
+void Contents::emptyVectors()
+{
+	int temp = itemName.size();
+	for (int i = 0; i < temp; i++)
+	{
+		itemName.pop_back();
+		quantity.pop_back();
+	}
+}
