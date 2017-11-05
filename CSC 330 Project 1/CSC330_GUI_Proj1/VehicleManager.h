@@ -13,8 +13,8 @@ public:
 	void setMileage(double);
 	void setID(string);
 	void setFuel(float);
-	void setItemName(string[], int);
-	void setQuantity(float[], int);
+	void setItemName(string);
+	void setQuantity(int);
 	void setDate(int, int, int);
 
 	
@@ -24,9 +24,10 @@ public:
 	string getID();
 	float getFuel();
 	string getItemName(int);
-	float getQuantity(int);
+	int getQuantity(int);
 	Date getDate();
 	void getDateAll(int&, int&, int&);
+	int getVectSize();
 private:
 	string usage;
 	string name;

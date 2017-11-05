@@ -25,14 +25,14 @@ void VehicleManager::setFuel(float fuel)
 	vehicle.setFuel(fuel);
 }
 
-void VehicleManager::setItemName(string itemName[], int size)
+void VehicleManager::setItemName(string itemName)
 {
-	contents.setItemName(itemName, size);
+	contents.setItemName(itemName);
 }
 
-void VehicleManager::setQuantity(float quantity[], int size)
+void VehicleManager::setQuantity(int quantity)
 {
-	contents.setQuantity(quantity, size);
+	contents.setQuantity(quantity);
 }
 
 void VehicleManager::setDate(int day, int month, int year)
@@ -70,7 +70,7 @@ string VehicleManager::getItemName(int index)
 	return contents.getItemName(index);
 }
 
-float VehicleManager::getQuantity(int index)
+int VehicleManager::getQuantity(int index)
 {
 	return contents.getQuantity(index);
 }
@@ -85,4 +85,9 @@ void VehicleManager::getDateAll(int &day, int &month, int &year)
 	day = date.getDay();
 	month = date.getMonth();
 	year = date.getYear();
+}
+
+int VehicleManager::getVectSize()
+{
+	return contents.getVectSize();;
 }
