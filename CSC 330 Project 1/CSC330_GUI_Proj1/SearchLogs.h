@@ -67,6 +67,8 @@ namespace CSC330GUIProj1 {
 	private: System::Windows::Forms::Label^  day;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  month;
+	private: System::Windows::Forms::Label^  errorLog;
+
 
 	private:
 		/// <summary>
@@ -101,6 +103,7 @@ namespace CSC330GUIProj1 {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->logIndices = (gcnew System::Windows::Forms::ListBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->errorLog = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->contentStock))->BeginInit();
 			this->SuspendLayout();
@@ -135,6 +138,7 @@ namespace CSC330GUIProj1 {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->BackColor = System::Drawing::SystemColors::AppWorkspace;
 			this->groupBox1->Controls->Add(this->year);
 			this->groupBox1->Controls->Add(this->label9);
 			this->groupBox1->Controls->Add(this->day);
@@ -296,11 +300,22 @@ namespace CSC330GUIProj1 {
 			this->label13->Size = System::Drawing::Size(0, 13);
 			this->label13->TabIndex = 8;
 			// 
+			// errorLog
+			// 
+			this->errorLog->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->errorLog->Location = System::Drawing::Point(467, 26);
+			this->errorLog->Name = L"errorLog";
+			this->errorLog->Size = System::Drawing::Size(278, 23);
+			this->errorLog->TabIndex = 9;
+			this->errorLog->Text = L"-";
+			// 
 			// SearchLogs
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(762, 276);
+			this->Controls->Add(this->errorLog);
 			this->Controls->Add(this->label13);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->button1);
@@ -317,29 +332,32 @@ namespace CSC330GUIProj1 {
 		}
 #pragma endregion
 private: System::Void logIndices_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-	contentIndices->Items->Clear();
-	int tempDay, tempMonth, tempYear;
+	contentIndices->Items->Clear();//clear list of contents
+	int tempDay, tempMonth, tempYear;//temporary variables for date
 	int index = System::Convert::ToInt16(logIndices->SelectedIndex);//get index for VehicleManager object
 	tripMileage->Text = System::Convert::ToString(searchLog.at(index).getMileage());//show mileage
 	searchLog.at(index).getDateAll(tempMonth, tempDay, tempYear);//get date
+
 	month->Text = System::Convert::ToString(tempMonth);//show date
 	day->Text = System::Convert::ToString(tempDay);
 	year->Text = System::Convert::ToString(tempYear);
-	for (int i = 0; i < searchLog.at(index).getVectSize(); i++)
+
+	for (int i = 0; i < searchLog.at(index).getVectSize(); i++)//show contents of delivery
 	{
 		contentIndices->Items->Add(marshal_as<String^>(searchLog.at(index).getItemName(i)));
 	}
-	contentStock->Value = 0;
+	contentStock->Value = 0;//reset value of content quantity
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 	ifstream inputFile;
-	inputFile.open("Test.txt");
+	inputFile.open(msclr::interop::marshal_as<std::string>(inputID->Text) + ".txt");
 	string temp;
 	int tempi;
 	int tempDay, tempMonth, tempYear;
 	char tempc;
 	if (inputFile.is_open())
 	{
+		errorLog->Text = "-";
 		while (searchLog.size() > 0)
 		{
 			searchLog.pop_back();
@@ -377,8 +395,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	}
 	else
 	{
-		cout << "Cannot open file." << endl;
-		exit(-1);
+		errorLog->Text = "No file for inputted ID found.";
 	}
 	inputFile.close();
 }

@@ -335,7 +335,7 @@ namespace CSC330GUIProj1 {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		ofstream outputFile;//file stream
-		outputFile.open("Test.txt", ofstream::app);//open file
+		outputFile.open(Log.getID()+".txt", ofstream::app);//open file
 
 		if (outputFile.is_open())//check if file is open, if not exit program
 		{
@@ -370,7 +370,7 @@ namespace CSC330GUIProj1 {
 		}
 		else
 		{
-			exit(-1);
+			errorLabel->Text = "File cannot be opened.";
 		}
 		outputFile.close();
 	}
