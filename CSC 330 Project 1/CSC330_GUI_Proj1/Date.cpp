@@ -8,11 +8,6 @@ void Date::setDate(int day, int month, int year)
 	//modify to check to make sure it is a valid date
 }
 
-Date Date::getDate()
-{
-	return Date();
-}
-
 int Date::getDay()
 {
 	return day;
