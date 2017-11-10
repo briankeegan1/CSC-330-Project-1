@@ -17,3 +17,15 @@ ListViewItem: {Soda}	x51
 ListViewItem: {Water}	x5
 |--|
 
+Vehicle Operator: Gilbert Flintlock
+Vehicle ID: 1526
+Vehicle Usage: Delivery
+Trip Mileage: 450
+Operating Date: 11 / 10 / 2017
+--------------Cargo List--------------
+ListViewItem: {Pants}	x20
+ListViewItem: {Shoes}	x15
+ListViewItem: {Shoes}	x66
+ListViewItem: {Pants}	x22
+|--|
+

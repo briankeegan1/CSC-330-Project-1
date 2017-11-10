@@ -138,7 +138,7 @@ namespace CSC330GUIProj1 {
 			this->createLog->Location = System::Drawing::Point(550, 355);
 			this->createLog->Name = L"createLog";
 			this->createLog->Size = System::Drawing::Size(200, 100);
-			this->createLog->TabIndex = 0;
+			this->createLog->TabIndex = 9;
 			this->createLog->Text = L"Create Log";
 			this->createLog->UseVisualStyleBackColor = true;
 			this->createLog->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
@@ -159,7 +159,7 @@ namespace CSC330GUIProj1 {
 			this->logVehicleID->Location = System::Drawing::Point(176, 63);
 			this->logVehicleID->Name = L"logVehicleID";
 			this->logVehicleID->Size = System::Drawing::Size(100, 20);
-			this->logVehicleID->TabIndex = 2;
+			this->logVehicleID->TabIndex = 1;
 			this->logVehicleID->TextChanged += gcnew System::EventHandler(this, &MyForm::logVehicleID_TextChanged);
 			// 
 			// label2
@@ -235,7 +235,7 @@ namespace CSC330GUIProj1 {
 			this->logDriverName->Location = System::Drawing::Point(176, 99);
 			this->logDriverName->Name = L"logDriverName";
 			this->logDriverName->Size = System::Drawing::Size(100, 20);
-			this->logDriverName->TabIndex = 21;
+			this->logDriverName->TabIndex = 2;
 			this->logDriverName->TextChanged += gcnew System::EventHandler(this, &MyForm::logDriverName_TextChanged);
 			// 
 			// label5
@@ -254,7 +254,7 @@ namespace CSC330GUIProj1 {
 			this->logDate->Location = System::Drawing::Point(176, 163);
 			this->logDate->Name = L"logDate";
 			this->logDate->Size = System::Drawing::Size(200, 20);
-			this->logDate->TabIndex = 22;
+			this->logDate->TabIndex = 4;
 			this->logDate->ValueChanged += gcnew System::EventHandler(this, &MyForm::dateTimePicker1_ValueChanged);
 			// 
 			// logMileage
@@ -263,7 +263,7 @@ namespace CSC330GUIProj1 {
 			this->logMileage->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500000, 0, 0, 0 });
 			this->logMileage->Name = L"logMileage";
 			this->logMileage->Size = System::Drawing::Size(120, 20);
-			this->logMileage->TabIndex = 23;
+			this->logMileage->TabIndex = 5;
 			this->logMileage->ValueChanged += gcnew System::EventHandler(this, &MyForm::numericUpDown1_ValueChanged);
 			// 
 			// contentList
@@ -271,7 +271,7 @@ namespace CSC330GUIProj1 {
 			this->contentList->Location = System::Drawing::Point(176, 237);
 			this->contentList->Name = L"contentList";
 			this->contentList->Size = System::Drawing::Size(82, 122);
-			this->contentList->TabIndex = 24;
+			this->contentList->TabIndex = 6;
 			this->contentList->UseCompatibleStateImageBehavior = false;
 			this->contentList->View = System::Windows::Forms::View::List;
 			// 
@@ -282,7 +282,7 @@ namespace CSC330GUIProj1 {
 			this->addToContents->Location = System::Drawing::Point(176, 385);
 			this->addToContents->Name = L"addToContents";
 			this->addToContents->Size = System::Drawing::Size(120, 64);
-			this->addToContents->TabIndex = 25;
+			this->addToContents->TabIndex = 8;
 			this->addToContents->Text = L"Add to contents";
 			this->addToContents->UseVisualStyleBackColor = true;
 			this->addToContents->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_1);
@@ -293,7 +293,7 @@ namespace CSC330GUIProj1 {
 			this->contentStock->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500000, 0, 0, 0 });
 			this->contentStock->Name = L"contentStock";
 			this->contentStock->Size = System::Drawing::Size(78, 20);
-			this->contentStock->TabIndex = 26;
+			this->contentStock->TabIndex = 7;
 			this->contentStock->ValueChanged += gcnew System::EventHandler(this, &MyForm::contentStock_ValueChanged);
 			// 
 			// errorLabel
@@ -312,7 +312,7 @@ namespace CSC330GUIProj1 {
 			this->vehicleUsage->Location = System::Drawing::Point(176, 130);
 			this->vehicleUsage->Name = L"vehicleUsage";
 			this->vehicleUsage->Size = System::Drawing::Size(100, 20);
-			this->vehicleUsage->TabIndex = 29;
+			this->vehicleUsage->TabIndex = 3;
 			this->vehicleUsage->TextChanged += gcnew System::EventHandler(this, &MyForm::vehicleUsage_TextChanged);
 			// 
 			// label3
