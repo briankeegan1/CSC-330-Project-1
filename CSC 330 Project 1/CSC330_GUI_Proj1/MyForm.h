@@ -1,8 +1,9 @@
 #pragma once
 #include<iostream>
 #include<fstream>
-#include <msclr\marshal.h>
-#include <msclr\marshal_cppstd.h>
+#include<string>
+#include<msclr\marshal.h>
+#include<msclr\marshal_cppstd.h>
 #include"VehicleManager.h"
 using namespace std;
 //global vehiclemanager variable
@@ -27,6 +28,21 @@ namespace CSC330GUIProj1 {
 			//
 			//TODO: Add the constructor code here
 			//
+			ifstream inventoryList;
+			inventoryList.open("Inventory.txt");//open inventory file
+			if (inventoryList.is_open())//check if file is open
+			{
+				string temp;
+				while (inventoryList >> temp)//while items in list, add to inventoryList
+				{
+					contentList->Items->Add(msclr::interop::marshal_as<String^>(temp));
+				}
+			}
+			else
+			{
+				fileError->Text = "Inventory.txt not found.";
+			}
+			inventoryList.close();//close file
 		}
 
 	protected:
@@ -62,6 +78,8 @@ namespace CSC330GUIProj1 {
 	private: System::Windows::Forms::Label^  errorLabel;
 	private: System::Windows::Forms::TextBox^  vehicleUsage;
 	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  fileError;
+
 
 
 	protected:
@@ -80,9 +98,6 @@ namespace CSC330GUIProj1 {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			System::Windows::Forms::ListViewItem^  listViewItem1 = (gcnew System::Windows::Forms::ListViewItem(L"Shoes"));
-			System::Windows::Forms::ListViewItem^  listViewItem2 = (gcnew System::Windows::Forms::ListViewItem(L"Socks"));
-			System::Windows::Forms::ListViewItem^  listViewItem3 = (gcnew System::Windows::Forms::ListViewItem(L"Shoelaces"));
 			this->createLog = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->logVehicleID = (gcnew System::Windows::Forms::TextBox());
@@ -102,6 +117,7 @@ namespace CSC330GUIProj1 {
 			this->errorLabel = (gcnew System::Windows::Forms::Label());
 			this->vehicleUsage = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->fileError = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->logMileage))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->contentStock))->BeginInit();
@@ -109,6 +125,7 @@ namespace CSC330GUIProj1 {
 			// 
 			// createLog
 			// 
+			this->createLog->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			this->createLog->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->createLog->Location = System::Drawing::Point(550, 355);
@@ -195,6 +212,9 @@ namespace CSC330GUIProj1 {
 			// 
 			// pictureBox1
 			// 
+			this->pictureBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(415, 12);
 			this->pictureBox1->Name = L"pictureBox1";
@@ -233,6 +253,7 @@ namespace CSC330GUIProj1 {
 			// logMileage
 			// 
 			this->logMileage->Location = System::Drawing::Point(176, 202);
+			this->logMileage->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500000, 0, 0, 0 });
 			this->logMileage->Name = L"logMileage";
 			this->logMileage->Size = System::Drawing::Size(120, 20);
 			this->logMileage->TabIndex = 23;
@@ -240,10 +261,6 @@ namespace CSC330GUIProj1 {
 			// 
 			// contentList
 			// 
-			this->contentList->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(3) {
-				listViewItem1, listViewItem2,
-					listViewItem3
-			});
 			this->contentList->Location = System::Drawing::Point(176, 237);
 			this->contentList->Name = L"contentList";
 			this->contentList->Size = System::Drawing::Size(82, 122);
@@ -264,6 +281,7 @@ namespace CSC330GUIProj1 {
 			// contentStock
 			// 
 			this->contentStock->Location = System::Drawing::Point(264, 240);
+			this->contentStock->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500000, 0, 0, 0 });
 			this->contentStock->Name = L"contentStock";
 			this->contentStock->Size = System::Drawing::Size(78, 20);
 			this->contentStock->TabIndex = 26;
@@ -299,11 +317,21 @@ namespace CSC330GUIProj1 {
 			this->label3->TabIndex = 28;
 			this->label3->Text = L"Vehicle Usage:";
 			// 
+			// fileError
+			// 
+			this->fileError->AutoSize = true;
+			this->fileError->Location = System::Drawing::Point(13, 345);
+			this->fileError->Name = L"fileError";
+			this->fileError->Size = System::Drawing::Size(10, 13);
+			this->fileError->TabIndex = 30;
+			this->fileError->Text = L"-";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(854, 461);
+			this->Controls->Add(this->fileError);
 			this->Controls->Add(this->vehicleUsage);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->errorLabel);
@@ -335,32 +363,32 @@ namespace CSC330GUIProj1 {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		ofstream outputFile;//file stream
-		outputFile.open(Log.getID()+".txt", ofstream::app);//open file
+		outputFile.open(Log.getID()+".txt", ofstream::app);//open/create file based on vehicle ID
 
 		if (outputFile.is_open())//check if file is open, if not exit program
 		{
 			int day, month, year;
-			Log.getDateAll(day, month, year);
-			if ((Log.getName() == "") || (Log.getID() == "") || (Log.getMileage() == NULL) || (day == NULL) || (Log.getVectSize() < 1) || (Log.getUsage() == ""))
+			if ((Log.getName() == "") || (Log.getID() == "") || (Log.getMileage() == NULL) || (day == NULL) || (Log.getVectSize() < 1) || (Log.getUsage() == ""))//check if all fields for log are filled
 			{
 				errorLabel->Text = "Must fill in all fields";
 			}
 			else
 			{
+				Log.getDateAll(day, month, year);//get info from class VehicleManager and write to log
 				outputFile << "Vehicle Operator: " << Log.getName() << endl;
 				outputFile << "Vehicle ID: " << Log.getID() << endl;
 				outputFile << "Vehicle Usage: " << Log.getUsage() << endl;
 				outputFile << "Trip Mileage: " << Log.getMileage() << endl;
 				outputFile << "Operating Date: " << month << " / " << day << " / " << year << endl;
 				outputFile << "--------------Cargo List--------------" << endl;
-				for(int i = 0; i < Log.getVectSize(); i++)
+				for(int i = 0; i < Log.getVectSize(); i++)//while still items in vector, add to log
 				{
 					outputFile << Log.getItemName(i) << "\tx" << Log.getQuantity(i) << endl;
 				}
 				outputFile << "|--|" << endl << endl;
 				//clear data on Log variable
 				
-				logVehicleID->Text = "";
+				logVehicleID->Text = "";//reset input fields
 				logDriverName->Text = "";
 				vehicleUsage->Text = "";
 				logMileage->Value = 0;
@@ -368,34 +396,33 @@ namespace CSC330GUIProj1 {
 				errorLabel->Text = "";
 			}
 		}
-		else
+		else//error if file cannot be opened/created
 		{
 			errorLabel->Text = "File cannot be opened.";
 		}
-		outputFile.close();
+		outputFile.close();//close output stream
 	}
 private: System::Void dateTimePicker1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-	Log.setDate(logDate->Value.Day,logDate->Value.Month, logDate->Value.Year);
+	Log.setDate(logDate->Value.Day,logDate->Value.Month, logDate->Value.Year);//store selected date
 }
 private: System::Void logVehicleID_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-	Log.setID(msclr::interop::marshal_as<std::string>(logVehicleID->Text));
+	Log.setID(msclr::interop::marshal_as<std::string>(logVehicleID->Text));//store vehicleID
 }
 private: System::Void logDriverName_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-	Log.setName(msclr::interop::marshal_as<std::string>(logDriverName->Text));
+	Log.setName(msclr::interop::marshal_as<std::string>(logDriverName->Text));//store driver name
 }
 private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-	
-	Log.setMileage(System::Convert::ToDouble(logMileage->Value));
+	Log.setMileage(System::Convert::ToDouble(logMileage->Value));//store mileage of trip
 }
 private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
-	Log.setItemName(msclr::interop::marshal_as<std::string>(contentList->SelectedItems[0]->ToString()));
-	Log.setQuantity(System::Convert::ToInt16(contentStock->Value));
-	contentStock->Value = 0;
+	Log.setItemName(msclr::interop::marshal_as<std::string>(contentList->SelectedItems[0]->ToString()));//store item name
+	Log.setQuantity(System::Convert::ToInt16(contentStock->Value));//store item quantity
+	contentStock->Value = 0;//reset value of quantity
 }
 private: System::Void contentStock_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void vehicleUsage_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-	Log.setUsage(msclr::interop::marshal_as<std::string>(vehicleUsage->Text));
+	Log.setUsage(msclr::interop::marshal_as<std::string>(vehicleUsage->Text));//store usage of vehicle
 }
 };
 }

@@ -1,9 +1,9 @@
 #pragma once
 #include"MainWindow.h"
-#include <msclr\marshal.h>
-#include <msclr\marshal_cppstd.h>
+#include<msclr\marshal.h>
+#include<msclr\marshal_cppstd.h>
 #include<string>
-#include <stdlib.h>
+#include<stdlib.h>
 #include"VehicleManager.h"
 using namespace std;
 
@@ -164,87 +164,110 @@ namespace CSC330GUIProj1 {
 			// year
 			// 
 			this->year->AutoSize = true;
-			this->year->Location = System::Drawing::Point(275, 88);
+			this->year->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->year->Location = System::Drawing::Point(316, 88);
 			this->year->Name = L"year";
-			this->year->Size = System::Drawing::Size(29, 13);
+			this->year->Size = System::Drawing::Size(49, 24);
 			this->year->TabIndex = 17;
 			this->year->Text = L"Year";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(257, 88);
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(298, 88);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(12, 13);
+			this->label9->Size = System::Drawing::Size(15, 24);
 			this->label9->TabIndex = 16;
 			this->label9->Text = L"/";
 			// 
 			// day
 			// 
 			this->day->AutoSize = true;
-			this->day->Location = System::Drawing::Point(236, 88);
+			this->day->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->day->Location = System::Drawing::Point(277, 88);
 			this->day->Name = L"day";
-			this->day->Size = System::Drawing::Size(15, 13);
+			this->day->Size = System::Drawing::Size(23, 24);
 			this->day->TabIndex = 15;
 			this->day->Text = L"D";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(218, 88);
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(259, 88);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(12, 13);
+			this->label4->Size = System::Drawing::Size(15, 24);
 			this->label4->TabIndex = 14;
 			this->label4->Text = L"/";
 			// 
 			// month
 			// 
 			this->month->AutoSize = true;
-			this->month->Location = System::Drawing::Point(196, 88);
+			this->month->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->month->Location = System::Drawing::Point(231, 88);
 			this->month->Name = L"month";
-			this->month->Size = System::Drawing::Size(16, 13);
+			this->month->Size = System::Drawing::Size(26, 24);
 			this->month->TabIndex = 13;
 			this->month->Text = L"M";
 			// 
 			// contentStock
 			// 
-			this->contentStock->Location = System::Drawing::Point(644, 44);
+			this->contentStock->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->contentStock->Location = System::Drawing::Point(591, 75);
+			this->contentStock->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 5000, 0, 0, 0 });
 			this->contentStock->Name = L"contentStock";
-			this->contentStock->Size = System::Drawing::Size(83, 20);
+			this->contentStock->Size = System::Drawing::Size(83, 29);
 			this->contentStock->TabIndex = 12;
+			this->contentStock->ThousandsSeparator = true;
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label12->Location = System::Drawing::Point(586, 46);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(52, 13);
+			this->label12->Size = System::Drawing::Size(88, 24);
 			this->label12->TabIndex = 11;
 			this->label12->Text = L"Quantity: ";
 			// 
 			// contentIndices
 			// 
+			this->contentIndices->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->contentIndices->FormattingEnabled = true;
+			this->contentIndices->ItemHeight = 20;
 			this->contentIndices->Location = System::Drawing::Point(459, 20);
 			this->contentIndices->Name = L"contentIndices";
-			this->contentIndices->Size = System::Drawing::Size(120, 160);
+			this->contentIndices->Size = System::Drawing::Size(120, 164);
 			this->contentIndices->TabIndex = 10;
 			this->contentIndices->SelectedIndexChanged += gcnew System::EventHandler(this, &SearchLogs::contentIndices_SelectedIndexChanged);
 			// 
 			// tripMileage
 			// 
 			this->tripMileage->AutoSize = true;
-			this->tripMileage->Location = System::Drawing::Point(199, 167);
+			this->tripMileage->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tripMileage->Location = System::Drawing::Point(259, 149);
 			this->tripMileage->Name = L"tripMileage";
-			this->tripMileage->Size = System::Drawing::Size(0, 13);
+			this->tripMileage->Size = System::Drawing::Size(0, 24);
 			this->tripMileage->TabIndex = 9;
 			// 
 			// vehicleID
 			// 
 			this->vehicleID->AutoSize = true;
-			this->vehicleID->Location = System::Drawing::Point(199, 20);
+			this->vehicleID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->vehicleID->Location = System::Drawing::Point(241, 16);
 			this->vehicleID->Name = L"vehicleID";
-			this->vehicleID->Size = System::Drawing::Size(0, 13);
+			this->vehicleID->Size = System::Drawing::Size(0, 24);
 			this->vehicleID->TabIndex = 6;
 			// 
 			// label7
@@ -259,36 +282,45 @@ namespace CSC330GUIProj1 {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(133, 167);
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(133, 149);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(68, 13);
+			this->label6->Size = System::Drawing::Size(120, 24);
 			this->label6->TabIndex = 4;
 			this->label6->Text = L"Trip Mileage:";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(134, 88);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(54, 13);
+			this->label5->Size = System::Drawing::Size(91, 24);
 			this->label5->TabIndex = 3;
 			this->label5->Text = L"Trip Date:";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(134, 20);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(134, 16);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(59, 13);
+			this->label3->Size = System::Drawing::Size(101, 24);
 			this->label3->TabIndex = 1;
 			this->label3->Text = L"Vehicle ID:";
 			// 
 			// logIndices
 			// 
+			this->logIndices->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->logIndices->FormattingEnabled = true;
+			this->logIndices->ItemHeight = 20;
 			this->logIndices->Location = System::Drawing::Point(7, 20);
 			this->logIndices->Name = L"logIndices";
-			this->logIndices->Size = System::Drawing::Size(120, 160);
+			this->logIndices->Size = System::Drawing::Size(120, 164);
 			this->logIndices->TabIndex = 0;
 			this->logIndices->SelectedIndexChanged += gcnew System::EventHandler(this, &SearchLogs::logIndices_SelectedIndexChanged);
 			// 
@@ -349,21 +381,22 @@ private: System::Void logIndices_SelectedIndexChanged(System::Object^  sender, S
 	contentStock->Value = 0;//reset value of content quantity
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	ifstream inputFile;
-	inputFile.open(msclr::interop::marshal_as<std::string>(inputID->Text) + ".txt");
-	string temp;
+	ifstream inputFile;//input file stream
+	inputFile.open(msclr::interop::marshal_as<std::string>(inputID->Text) + ".txt");//open file
+	string temp;//temp variables for getting data from file
 	int tempi;
 	int tempDay, tempMonth, tempYear;
 	char tempc;
-	if (inputFile.is_open())
+	if (inputFile.is_open())//check if file is open
 	{
-		errorLog->Text = "-";
-		while (searchLog.size() > 0)
+		errorLog->Text = "-";//clear error message label
+		while (searchLog.size() > 0)//clear search log
 		{
 			searchLog.pop_back();
 		}
-		while (inputFile >> temp >> temp >> temp)
+		while (inputFile >> temp >> temp)
 		{
+			getline(inputFile, temp);
 			Log.setName(temp);//store
 			inputFile >> temp >> temp >> temp;
 			Log.setID(temp);//store
@@ -385,6 +418,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			temp = msclr::interop::marshal_as<std::string>(inputID->Text);
 			if (temp == Log.getID())
 			{
+				vehicleID->Text = inputID->Text;
 				logIndices->Items->Add(marshal_as<String^>(Log.getName()));
 				tripMileage->Text = System::Convert::ToString(Log.getMileage());
 				Log.getDateAll(tempMonth, tempDay, tempYear);
