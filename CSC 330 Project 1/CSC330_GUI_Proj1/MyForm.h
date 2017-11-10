@@ -6,8 +6,11 @@
 #include<msclr\marshal_cppstd.h>
 #include"VehicleManager.h"
 using namespace std;
-//global vehiclemanager variable
+
+//global variables
+string inventoryFileName = "Inventory.txt";
 VehicleManager Log;
+
 namespace CSC330GUIProj1 {
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -29,7 +32,7 @@ namespace CSC330GUIProj1 {
 			//TODO: Add the constructor code here
 			//
 			ifstream inventoryList;
-			inventoryList.open("Inventory.txt");//open inventory file
+			inventoryList.open(inventoryFileName);//open inventory file
 			if (inventoryList.is_open())//check if file is open
 			{
 				string temp;
@@ -40,7 +43,7 @@ namespace CSC330GUIProj1 {
 			}
 			else
 			{
-				fileError->Text = "Inventory.txt not found.";
+				fileError->Text = "Inventory file not found.";
 			}
 			inventoryList.close();//close file
 		}
@@ -79,6 +82,8 @@ namespace CSC330GUIProj1 {
 	private: System::Windows::Forms::TextBox^  vehicleUsage;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  fileError;
+	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+	private: System::Windows::Forms::Button^  openFile;
 
 
 
@@ -118,6 +123,8 @@ namespace CSC330GUIProj1 {
 			this->vehicleUsage = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->fileError = (gcnew System::Windows::Forms::Label());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->openFile = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->logMileage))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->contentStock))->BeginInit();
@@ -270,9 +277,11 @@ namespace CSC330GUIProj1 {
 			// 
 			// addToContents
 			// 
+			this->addToContents->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->addToContents->Location = System::Drawing::Point(176, 385);
 			this->addToContents->Name = L"addToContents";
-			this->addToContents->Size = System::Drawing::Size(92, 23);
+			this->addToContents->Size = System::Drawing::Size(120, 64);
 			this->addToContents->TabIndex = 25;
 			this->addToContents->Text = L"Add to contents";
 			this->addToContents->UseVisualStyleBackColor = true;
@@ -326,11 +335,27 @@ namespace CSC330GUIProj1 {
 			this->fileError->TabIndex = 30;
 			this->fileError->Text = L"-";
 			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
+			this->openFileDialog1->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &MyForm::openFileDialog1_FileOk);
+			// 
+			// openFile
+			// 
+			this->openFile->Location = System::Drawing::Point(12, 409);
+			this->openFile->Name = L"openFile";
+			this->openFile->Size = System::Drawing::Size(92, 40);
+			this->openFile->TabIndex = 31;
+			this->openFile->Text = L"Open Inventory FIle";
+			this->openFile->UseVisualStyleBackColor = true;
+			this->openFile->Click += gcnew System::EventHandler(this, &MyForm::openFile_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(854, 461);
+			this->Controls->Add(this->openFile);
 			this->Controls->Add(this->fileError);
 			this->Controls->Add(this->vehicleUsage);
 			this->Controls->Add(this->label3);
@@ -423,6 +448,36 @@ private: System::Void contentStock_ValueChanged(System::Object^  sender, System:
 }
 private: System::Void vehicleUsage_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 	Log.setUsage(msclr::interop::marshal_as<std::string>(vehicleUsage->Text));//store usage of vehicle
+}
+private: System::Void openFileDialog1_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+}
+private: System::Void openFile_Click(System::Object^  sender, System::EventArgs^  e) {
+	openFileDialog1->ShowDialog();
+	if (openFileDialog1->ToString() != "")//if file was selected, store inventoryFileName
+	{
+		inventoryFileName = msclr::interop::marshal_as<std::string>(openFileDialog1->FileName->ToString());
+		//update List
+		changeList();
+	}
+}
+private: System::Void changeList()//for when inventory file is changed
+{
+	contentList->Clear();
+	ifstream inventoryList;
+	inventoryList.open(inventoryFileName);//open inventory file
+	if (inventoryList.is_open())//check if file is open
+	{
+		string temp;
+		while (inventoryList >> temp)//while items in list, add to inventoryList
+		{
+			contentList->Items->Add(msclr::interop::marshal_as<String^>(temp));
+		}
+	}
+	else
+	{
+		fileError->Text = "Inventory file not found.";
+	}
+	inventoryList.close();//close file
 }
 };
 }
